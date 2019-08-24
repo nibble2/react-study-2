@@ -1,22 +1,21 @@
-import React from 'react';
+import React from 'react' ;
 
 function User({ user, onRemove, onToggle }) {
   return (
     <div>
-      <b 
-        style={{
+      <b
+        style = {{
           cursor: 'pointer',
           color: user.active ? 'green' : 'black'
         }}
         onClick={() => onToggle(user.id)}
       >
         {user.username}
-      </b>
-
-      <span>({user.email})</span>
+      </b> 
+      <span>{user.email}</span>
       <button onClick={() => onRemove(user.id)}>삭제</button>
     </div>
-  );
+  )
 }
 
 function UserList({ users, onRemove, onToggle }) {
@@ -26,7 +25,7 @@ function UserList({ users, onRemove, onToggle }) {
         <User user={user} key={user.id} onRemove={onRemove} onToggle={onToggle} />
       ))}
     </div>
-  );
+  ) ;
 }
 
-export default UserList;
+export default React.memo(UserList) ;
